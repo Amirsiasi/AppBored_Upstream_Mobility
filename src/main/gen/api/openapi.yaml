@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  description: "Eine API, um zufällige Aktivitäten zu generieren, wenn dir langweilig\
+    \ ist."
+  title: Bored API
+  version: 1.0.0
+servers:
+- url: https://www.boredapi.com/api
+paths:
+  /activity:
+    get:
+      operationId: getRandomActivity
+      parameters:
+      - description: Der Typ der Aktivität
+        explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityResponse'
+          description: Erfolgreiche Antwort
+      summary: Ruft eine zufällige Aktivität ab
+      x-accepts: application/json
+components:
+  schemas:
+    ActivityResponse:
+      example:
+        activity: activity
+        accessibility: 1.4658129805029452
+        price: 6.027456183070403
+        link: link
+        type: type
+        key: key
+        participants: 0
+      properties:
+        activity:
+          type: string
+        type:
+          type: string
+        participants:
+          type: integer
+        price:
+          type: number
+        link:
+          type: string
+        key:
+          type: string
+        accessibility:
+          type: number
+      type: object
+

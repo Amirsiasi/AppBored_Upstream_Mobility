@@ -1,0 +1,184 @@
+1707762395539:help
+1707763610507:add --a 1 --b 2
+1707763618635:help
+1707771258404:get-random-activity
+1707771282619:get-activity-by-type --type education
+1707771359882:help
+1707771365723:random
+1707771375417:get --type sport
+1707771417635:get --type social
+1707771428032:get --type sport
+1707771696341:help
+1707771705664:get --type sport
+1707771718238:get --type education
+1707771726390:random
+1707777431579:help
+1707777441085:get
+1707777456693:get --type sport
+1707777466389:random
+1707829987095:help
+1707829994495:random
+1707830004794:get --type social
+1707830015767:get --type sport
+1707867826794:help
+1707867841338:random
+1707867851929:get --type social
+1707868196053:help
+1707868373089:random
+1707868386601:get --type social
+1707868402779:exit
+1707868554215:help
+1707869097296:getActivities --type -ed
+1707869212043:exit
+1707869244763:help
+1707869254525:random
+1707869263809:get --type social
+1707869284547:getActivities --type
+1707869699949:help
+1707869707899:6. Completion
+1707869707970:Spring Shell can provide completion proposals for both interactive shell and a command-line. There are differences however as when shell is in interactive mode we have an active instance of a shell meaning it’s easier to provide more programmatic ways to provide completion hints. When shell is purely run as a command-line tool a completion can only be accomplished with integration into OS level shell’s like bash.
+1707869707983:6.1. Interactive
+1707869708012:Hints for completions are calculated with function or interface style methods which takes CompletionContext and returns a list of CompletionProposal instances. CompletionContext gives you various information about a current context like command registration and option.
+1707869708042:Generic resolvers can be registered as a beans if those are useful for all commands and scenarious. For example existing completion implementation RegistrationOptionsCompletionResolver handles completions for a option names.
+1707869708051:static class MyValuesCompletionResolver implements CompletionResolver {
+1707869708057:@Override
+1707869708067:public List<CompletionProposal> apply(CompletionContext t) {
+1707869708085:return Arrays.asList("val1", "val2").stream()
+1707869708101:.map(CompletionProposal::new)
+1707869708111:.collect(Collectors.toList());
+1707869708115:}
+1707869708127:Option values with builder based command registration can be defined per option.
+1707869708134:void dump1() {
+1707869708141:CommandRegistration.builder()
+1707869708149:.withOption()
+1707869708158:.longNames("arg1")
+1707869708168:.completion(ctx -> {
+1707869708186:return Arrays.asList("val1", "val2").stream()
+1707869708198:.map(CompletionProposal::new)
+1707869708212:.collect(Collectors.toList());
+1707869708217:})
+1707869708223:.and()
+1707869708230:.build();
+1707869708232:}
+1707869708243:Option values with annotation based command registration are handled via ValueProvider interface which can be defined with @ShellOption annotation.
+1707869708251:static class MyValuesProvider implements ValueProvider {
+1707869708255:@Override
+1707869708264:public List<CompletionProposal> complete(CompletionContext completionContext) {
+1707869708271:return Arrays.asList("val1", "val2").stream()
+1707869708278:.map(CompletionProposal::new)
+1707869708286:.collect(Collectors.toList());
+1707869708289:}
+1707869708299:Actual ValueProvider with annotation based command needs to be registered as a Bean.
+1707869708304:@ShellMethod(value = "complete", key = "complete")
+1707869708307:public String complete(
+1707869708314:@ShellOption(valueProvider = MyValuesProvider.class) String arg1)
+1707869708317:{
+1707869708323:return "You said " + arg1;
+1707869708326:}
+1707869708328:6.2. Command-Line
+1707869708338:Command-line completion currently only support bash and is documented in a built-in completion command Completion.
+1707869741770:help
+1707869769615:exit
+1707869861146:help
+1707869865298:quit
+1707870301247:help
+1707870369854:getActivities
+1707870409723:exit
+1707870648372:exit,quit
+1707870673401:exit
+1707870847619:getActivities --type
+1707870861748:stacktrace
+1707871029160:getActivities --type
+1707871095772:getActivities --typ social
+1707871102360:exit
+1707871220097:getActivities --typeed
+1707871615147:#
+1707871621240:help
+1707871628591:exit
+1707871658827:help
+1707871678157:get
+1707871707923:get --type diy
+1707871733943:exit
+1707872405428:help
+1707872423111:get --type
+1707872425808:exit
+1707872647154:get --type
+1707872691655:exit
+1707903553495:help
+1707903613021:get --type social
+1707903635928:clear
+1707903639315:exit
+1707915763791:help
+1707915847041:random
+1707915859396:get --type diy
+1707916222687:exit
+1707916262639:get education
+1707916327411:help
+1707916466586:get sport
+1707919034199:exit
+1707998196565:help
+1707998213190:get-activity
+1707998235777:exit
+1707998314907:help
+1707998322487:get
+1707998335931:get --type diy
+1707998343877:get education
+1707998352172:exit
+1707998435523:help
+1707998438889:get
+1707998445086:get sport
+1707998449210:get diy
+1707998484782:exit
+1707998671670:get
+1707998676208:get diy
+1707998702887:get diy --type ed
+1707998717835:get education
+1707998729590:exit
+1708018686044:clear
+1708018694194:help
+1708018698096:get
+1708018726411:get social --type education
+1708018742186:get --type diy
+1708018748735:exit
+1708023333362:help
+1708023336199:get
+1708023343817:get diy
+1708023355327:get --type recreational
+1708023375513:clear
+1708023378477:exit
+1708043927619:help
+1708043929892:get
+1708043938744:get --type diy
+1708043951910:quit
+1708083150447:help
+1708083167889:get
+1708083206138:get diy --type education
+1708083209708:exit
+1708083417330:help
+1708083422431:get
+1708083433192:get --type social
+1708083475877:exit
+1708083493679:help
+1708083499762:get
+1708083600218:help
+1708083602944:get
+1708083619431:exit
+1708253149966:help
+1708253154019:get
+1708253158643:get diy
+1708253173691:get education
+1708253177359:exit
+1708253283921:help
+1708253286918:get
+1708253291285:get diy
+1708253293964:exit
+1708258630200:clear
+1708258632518:help
+1708258635931:get
+1708258641142:get diy
+1708258654391:get --type cooking
+1708258665758:exit
+1708281742268:help
+1708281744145:get
+1708281754136:get --type cooking
+1708281759708:exit
