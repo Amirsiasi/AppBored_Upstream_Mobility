@@ -27,7 +27,7 @@ public class ActivityTypeValueProvider  implements ValueProvider {
     @Override
     public List<CompletionProposal> complete(MethodParameter methodParameter, CompletionContext completionContext, String[] strings) {
         // die Liste der Vorschläge, die für den Parameter angezeigt werden sollen.
-        List<String> activityTypes = Arrays.asList("education", "recreational", "social", "diy", "charity", "cooking", "relaxation");
+        List<String> activityTypes = Arrays.asList("education", "recreational", "social", "diy", "charity", "cooking", "relaxation","music");
 
         return activityTypes.stream()
                 .map(CompletionProposal::new)
